@@ -3,7 +3,7 @@
 //02.250458,1,MEUCIQCd8FS9M+dHTrcaxxL77H5xm1n0s5ob1WH4XaXprpAeEAIgALgvUpb1G4pUfmsURPSWclPAuFZ1VsEuMAyGo2AzoZQ=.iitkidcard
  * * ROLL NUMBER LOCATION: 
  * The roll number is typically a 6-digit number located next to a "UID" or "RollNo" label.
- */
+ */ 
 
 function extractRollNumber(qrString) {
 const matches = qrString.match(/\d{6}/g);
