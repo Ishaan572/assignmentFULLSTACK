@@ -31,9 +31,11 @@ bot.on('photo', async (msg) => {
         const fileLink = await bot.getFileLink(fileId);
 
         const qrData = await decodeQR(fileLink);
+        console.log("DEBUG - QR Data:", qrData);
         if (!qrData) throw new Error("NO_QR");
 
         const rollNumber = extractRollNumber(qrData);
+        console.log("DEBUG - Extracted Roll Number:", rollNumber);
         if (!rollNumber) throw new Error("NO_ROLL_NUMBER");
 
         const registered = await isRegistered(rollNumber);
@@ -59,7 +61,9 @@ bot.on('photo', async (msg) => {
                 bot.sendMessage(chatId, "❌ This roll number is not registered or is out of range.");
                 break;
             default:
-                console.error(error);
+                console.error("DEBUG - Unexpected error:", error);
+                console.error("DEBUG - Error message:", error.message);
+                console.error("DEBUG - Error stack:", error.stack);
                 bot.sendMessage(chatId, "❌ An unexpected error occurred while processing the photo.");
         }
     }
